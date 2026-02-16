@@ -1,8 +1,10 @@
 import sqlite3
-import os
 import hashlib
-import sys
 import getpass
+
+'''
+functions for getting and initializing the master key password
+'''
 
 def hashmaster(password):
     h = hashlib.new("sha256")
@@ -10,8 +12,9 @@ def hashmaster(password):
     h.update(passw)
     return h.hexdigest()
 
-def db_ify(passy, service="master2", user="eatpant"):
-    encryptedpassword = hashmaster(passy)
+def db_ify(service="master", password):
+    user = getpass.getuser()
+    hashedpass = hashmaster(passy)
     conn = sqlite3.connect('passwords.db')
     cursor = conn.cursor()
     cursor.execute(
@@ -22,14 +25,17 @@ def db_ify(passy, service="master2", user="eatpant"):
 
 def check(service, password):
     passk = hashmaster(password)
+    user = getpass.user()
     conn = sqlite3.connect('passwords.db')
     cursor = conn.cursor()
     cursor.execute(
-        'SELECT password FROM passwords WHERE service_name = ?', ([service])
+        'SELECT password FROM passwords WHERE service_name = ? AND username = ?', (service, username)
     )
     result = cursor.fetchone()
+    if result == None:
+        return("incorrect system user. password manager must be used by the system creator")
     retrieved = ''.join(result)
     if retrieved == passk:
-        return("onward")
+        return True
     else:
-        return None
+        return False
