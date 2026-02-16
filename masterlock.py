@@ -23,13 +23,13 @@ def db_ify(service="master"):
     conn.commit()
     conn.close()
 
-def check(service, password):
+def check(password):
     passk = hashmaster(password)
     user = getpass.user()
     conn = sqlite3.connect('passwords.db')
     cursor = conn.cursor()
     cursor.execute(
-        'SELECT password FROM passwords WHERE service_name = ? AND username = ?', (service, username)
+        'SELECT password FROM passwords WHERE username = ?', ([user])
     )
     result = cursor.fetchone()
     if result == None:
