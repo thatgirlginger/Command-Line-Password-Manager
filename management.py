@@ -51,6 +51,4 @@ def delete(service, username, password):
         conn.close()
         print("successful")
     elif check != password:
-        print("incorrect password, not deleting")
-    else:
-        print("something else happened")
+        print("password failed, delete not executed")
