@@ -1,2 +1,2 @@
 # Command-Line-Password-Manager
-A simple password manager for the command line
+A simple python password manager for the command line
