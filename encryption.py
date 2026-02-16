@@ -1,4 +1,7 @@
 from cryptography.fernet import Fernet
+'''
+all of the key and encryption-related functions
+'''
 
 def create_key():
     key=Fernet.generate_key()
