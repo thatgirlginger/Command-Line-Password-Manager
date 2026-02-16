@@ -1,6 +1,5 @@
 from management import *
-from encryption import *
-from managermanagement import *
+from masterlock import *
 import sys
 import getpass
 
