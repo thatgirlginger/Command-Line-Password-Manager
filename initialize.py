@@ -1,5 +1,6 @@
 import sqlite3
 from masterlock import *
+import getpass
 '''
 initializing functions for the manager, run these in your project directory
 '''
@@ -18,3 +19,4 @@ def create_database():
 
 create_database()
 password = getpass.getpass()
+db_ify(password)
