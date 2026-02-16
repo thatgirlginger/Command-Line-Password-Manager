@@ -1,6 +1,7 @@
 import sqlite3
+from masterlock import *
 '''
-initializing functions to run these in your project directory
+initializing functions for the manager, run these in your project directory
 '''
 def create_database():
     connecting = sqlite3.connect('passwords.db')
@@ -14,3 +15,6 @@ def create_database():
     )
     connecting.commit()
     connecting.close()
+
+create_database()
+password = getpass.getpass()
