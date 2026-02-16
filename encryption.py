@@ -1,6 +1,6 @@
 from cryptography.fernet import Fernet
 
-def generatekey():
+def create_key():
     key=Fernet.generate_key()
     with open('key.key', 'wb') as keyfile:
         keyfile.write(key)
