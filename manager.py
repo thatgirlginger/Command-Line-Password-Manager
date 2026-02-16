@@ -9,13 +9,12 @@ import getpass
 the app to run in your command line
 '''
 
-serviceentry = getpass.getpass(prompt='service?')
-passwordentry = getpass.getpass(prompt='password?')
-string = check(serviceentry, passwordentry)
-if not string == None:
+pentry = getpass.getpass()
+pcheck = check(pentry)
+if pcheck == True:
     pass
 else:
-    print("incorrect password")
+    print("incorrect")
     sys.exit()
 
 
@@ -41,12 +40,20 @@ while True:
             service = input("service?")
             user = input("username?")
             newp = input("new password?")
-            update(service, user, newp)
+            pentry = check(getpass.getpass())
+            if pentry == True:
+                update(service, user, newp)
+            else:
+                print("update failed")
         case "deleteentry":
             service = input("service?")
             user = input("username?")
             password = input("password?")
-            delete(service, user, password)
+            pentry = check(getpass.getpass())
+            if pentry == True:
+                delete(service, user, password)
+            else:
+                print("not deleted")
         case "options":
             print("newentry, getuser, getpassword, updatepassword, deletentry")
         case "quit":
