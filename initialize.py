@@ -1,4 +1,7 @@
 import sqlite3
+'''
+initializing functions to run these in your project directory
+'''
 def create_database():
     connecting = sqlite3.connect('passwords.db')
     cursor = connecting.cursor()
