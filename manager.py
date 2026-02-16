@@ -1,19 +1,21 @@
 from management import *
-from database import *
 from encryption import *
 from managermanagement import *
 import sys
-import os
 import getpass
 
 
-entry = getpass.getpass(prompt='service?')
-intoward = getpass.getpass(prompt='password?')
-string = check(entry, intoward)
+'''
+the app to run in your command line
+'''
+
+serviceentry = getpass.getpass(prompt='service?')
+passwordentry = getpass.getpass(prompt='password?')
+string = check(serviceentry, passwordentry)
 if not string == None:
     pass
 else:
-    print("sorry, incorrect!")
+    print("incorrect password")
     sys.exit()
 
 
