@@ -12,7 +12,7 @@ def hashmaster(password):
     h.update(passw)
     return h.hexdigest()
 
-def db_ify(service="master", password):
+def db_ify(service="master"):
     user = getpass.getuser()
     hashedpass = hashmaster(passy)
     conn = sqlite3.connect('passwords.db')
@@ -33,7 +33,8 @@ def check(service, password):
     )
     result = cursor.fetchone()
     if result == None:
-        return("incorrect system user. password manager must be used by the system creator")
+        print("incorrect system user. password manager must be used by the system user who initialized the manager")
+        return False
     retrieved = ''.join(result)
     if retrieved == passk:
         return True
