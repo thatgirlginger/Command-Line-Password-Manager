@@ -18,7 +18,7 @@ def db_ify(service="master"):
     conn = sqlite3.connect('passwords.db')
     cursor = conn.cursor()
     cursor.execute(
-        'INSERT INTO passwords (service_name, username, password) VALUES (?, ?, ?)', (service, user, encryptedpassword)
+        'INSERT INTO passwords (service_name, username, password) VALUES (?, ?, ?)', (service, user, hashedpass)
         )
     conn.commit()
     conn.close()
@@ -39,4 +39,5 @@ def check(password):
     if retrieved == passk:
         return True
     else:
+        print("password incorrect")
         return False
